@@ -8,7 +8,7 @@
 
 ```java
 //非公平直接尝试cas，
-//公平锁没有这一步，直接acquire(1)执行AQS逻辑
+
 final void lock() {
     //非公平锁才有CAS
     if (compareAndSetState(0, 1))
@@ -16,6 +16,12 @@ final void lock() {
     else
         //aqs方法
         acquire(1);
+}
+
+//公平锁没有这一步，直接acquire(1)执行AQS逻辑
+final void lock() {
+     //aqs方法
+    acquire(1);
 }
 ```
 
