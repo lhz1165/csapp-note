@@ -2,19 +2,23 @@
 
 ## 寄存器分类
 
- %rbx,%rbp, and%r12–%r15are classified as **callee-saved registers**
+ %rbx,%rbp, %r12–%r15 are classified as **callee-saved registers**
 
-%rdi  %rsi  %rdx  %rcx    %r8 %r9   **caller-saved registers**
+%rdi  %rsi  %rdx  %rcx   %r8 %r9   **caller-saved registers**
 
 ![image-20231113114233452](assets/procedure/image-20231113114233452.png)
 
-%rsp 栈指针
+%rsp  %rbp栈指针：%rbp% 指向栈底， %rsp指向栈顶来，限制栈帧的范围
+
+%rax 保存function 的返回结果
 
 %rip 下一条将要被执行的指令的逻辑地址
 
 ## Stack
 
-![local_stack](assets/procedure/local_stack.png)
+<center class="half">    <img src="assets/procedure/image-20231114155735683.png" />    <img src="assets/procedure/image-20231114155112689.png" /> </center>
+
+
 
 ## Control Transfer
 
