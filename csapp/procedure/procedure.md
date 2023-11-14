@@ -23,7 +23,9 @@
 
 ##  2. <a name='Stack'></a>Stack
 
-<center class="half">    <img src="assets/procedure/image-20231114155735683.png" />    <img src="assets/procedure/image-20231114155112689.png" /> </center>
+<center class="half">    <img src="assets/procedure/image-20231114155735683.png " width = "50%" align=left />    <img src="assets/procedure/image-20231114155112689.png " width = "50%" align=right/> </center>
+
+（左边出自第三版，右边出自第二版，参数顺序理论上右边才是对的，这里有疑问）
 
 
 
