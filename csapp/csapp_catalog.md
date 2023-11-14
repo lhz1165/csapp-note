@@ -1,6 +1,6 @@
 
 * 1. [biots](biots)
-     1. [Bits,Bytes, and Integers](biots/Bits,Bytes, and Integers.md)
+     1. [Bits and Bytes and Integers](biots/BitsBytesandIntegers.md)
      2. [lab](biots/csapplab.md)
 * 2. [machine level](procedure)
      1. [procedure](procedure/procedure.md)
