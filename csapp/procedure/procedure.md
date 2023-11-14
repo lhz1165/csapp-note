@@ -1,6 +1,13 @@
+* 1. [寄存器分类](#register)
+* 2. [Stack](#Stack)
+* 3. [Control Transfer](#ControlTransfer)
+* 4. [Data Transfer（arguments）](#DataTransferarguments)
+* 5. [Local Storage on Stack（Local variables）](#LocalStorageonStackLocalvariables)
+* 6. [Local Storage in Registers（Saved registers部分）](#LocalStorageinRegistersSavedregisters)
+
 # procedure
 
-## 寄存器分类
+##  1. <a name='register1'></a>寄存器分类
 
  %rbx,%rbp, %r12–%r15 are classified as **callee-saved registers**
 
@@ -14,19 +21,19 @@
 
 %rip 下一条将要被执行的指令的逻辑地址
 
-## Stack
+##  2. <a name='Stack'></a>Stack
 
 <center class="half">    <img src="assets/procedure/image-20231114155735683.png" />    <img src="assets/procedure/image-20231114155112689.png" /> </center>
 
 
 
-## Control Transfer
+##  3. <a name='ControlTransfer'></a>Control Transfer
 
 call：被调用方法返回后的下一条指令地址（return address）push 到stack，然后pc设置为被调用方法的首地址
 
 ret：pop出return address，然后pc设置为return address
 
-## Data Transfer（arguments）
+##  4. <a name='DataTransferarguments'></a>Data Transfer（arguments）
 
 ![image-20231113135005671](assets/procedure/image-20231113135005671.png)
 
@@ -34,7 +41,7 @@ ret：pop出return address，然后pc设置为return address
 
 ![image-20231113135024111](assets/procedure/image-20231113135024111.png)
 
-## Local Storage on Stack（Local variables）
+##  5. <a name='LocalStorageonStackLocalvariables'></a>Local Storage on Stack（Local variables）
 
 
 
@@ -54,7 +61,7 @@ ret：pop出return address，然后pc设置为return address
 
 上图表示local variables x1-x4在 stack 的分配，**变量在stack不用对齐**； parameters x1-x4和&x1-&x4 6个分配在register，2个分配在stack,**参数在stack要对齐**
 
-## Local Storage in Registers（Saved registers部分）
+##  6. <a name='LocalStorageinRegistersSavedregisters'></a>Local Storage in Registers（Saved registers部分）
 
 （使用**callee-saved registers**来保存变量，必须在callee()里面保存之前caller()的寄存器数据到stack，再使用，callee()执行完返回后，把stack的变量写回到寄存器，交给caller()继续执行)
 
