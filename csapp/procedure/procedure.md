@@ -25,7 +25,7 @@
 
 <center class="half">    <img src="assets/procedure/image-20231114155735683.png " width = "50%" align=left />    <img src="assets/procedure/image-20231114155112689.png " width = "50%" align=right/> </center>
 
-（左边出自第三版，右边出自第二版，参数顺序理论上右边才是对的，这里有疑问）
+例如p(int.....,int 7x,int 8x,int 9x)->先9x进栈在8x进栈,从后往前
 
 
 
@@ -39,13 +39,13 @@ ret：pop出return address，然后pc设置为return address
 
 ![image-20231113135005671](assets/procedure/image-20231113135005671.png)
 
-函数超过6个参数，存储在stack里面
+假设p调用proc，p栈帧里传给proc的参数，超过6个的，存储在stack里面，并且最后 a4p 先压入栈，再a4，每个参数要对齐，所以下面实际是p的栈帧结构。
 
 ![image-20231113135024111](assets/procedure/image-20231113135024111.png)
 
 ##  5. <a name='LocalStorageonStackLocalvariables'></a>Local Storage on Stack（Local variables）
 
-
+局部变量存在stack的例子，局部变量也是按倒序来存的
 
 ![image-20231113145956959](assets/procedure/image-20231113145956959.png)
 
@@ -74,3 +74,19 @@ The name“caller saved”: can be understood in the context of a procedure P ha
 
 
 ![image-20231113192710103](assets/procedure/image-20231113192710103.png)
+
+## 总结
+
+栈帧压栈的顺序是
+
+先看有没有需要保存的被调用者寄存器，有的话压栈，（callee-register）
+
+随后看有没有多余的不满足条件的局部变量，有的话压栈，（Local variables，寄存器用完了存stack）
+
+随后看有没有满足条件的局部变量，有的话压栈，（Local variables，指针，数组存stack）
+
+随后看有没有多余的需要构造的参数，有的话压栈，（arguments大于6个存stack）
+
+随后用call来调用函数并保存返回地址，函数返回后继续运行
+
+运行到最后时，若之前有需要保存的被调用者寄存器，则把值从栈中弹回到对应的寄存器。
