@@ -12,11 +12,13 @@ W-W 不行
 
    **Node**： 普通链表节点 hash
 
-   **TreeBin** :保存root，以及lockstate方便以cas加锁,1(writer),2(waiter),3(reader) 3种状态,控制一棵树的读写
+   **TreeBin** :保存root，有读写锁，lockstate方便以cas加锁,1(writer),2(waiter),3(reader) 3种状态,控制一棵树的读写
 
    **TreeNode**:红黑树节点
 
-   **ForwardingNode**:扩容时，对每个桶进行转移，此时加锁并把元素复制到另一个map，完事之后，把原来的Node变成ForwardingNode，目的是当别的桶还没转移，读当前转移过的桶，通过ForwardingNode指向新的转移好的map去找数据，而原来没转移的还是在老map上读
+   **ForwardingNode**:扩容时，对每个桶进行转移，此时把桶加sychronized锁，并把元素复制到另一个map，当前桶转移完成后，把原来的Node变成ForwardingNode，并有指针指向新的桶。
+
+   目的是当别的桶还没转移，想要读当前转移过的ForwardingNode桶，通过ForwardingNode指向新的转移好的map去找数据，而读原来没转移的还是在老map上读
 
 3. cas & sychronized
 
